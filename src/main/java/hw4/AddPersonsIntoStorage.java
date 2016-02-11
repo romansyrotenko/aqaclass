@@ -15,7 +15,6 @@ public class AddPersonsIntoStorage {
 
         while (!container.isFull()) {
 
-            Person person = new Person();
             String name;
             int age;
 
@@ -26,17 +25,15 @@ public class AddPersonsIntoStorage {
                 age = readInput.readAge();
 
                 if (isValidName(name) & isValidAge(age)) {
-                    person.setName(name);
-                    person.setAge(age);
+                    Person person = new Person(name, age);
+                    container.add(person);
+                    System.out.println("-----");
+                    System.out.println("Person "+ person + " was successfully added into the Storage");
                     break;
                 } else {
                     System.out.println(errorMessage());
                 }
             } while (true);
-
-            container.add(person);
-            System.out.println("-----");
-            System.out.println("Person "+ person + " was successfully added into the Storage");
         }
 
         System.out.println("Our intStorage is full!");
