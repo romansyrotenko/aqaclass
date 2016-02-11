@@ -1,5 +1,9 @@
 package hw4;
 
+import static hw4.Validator.errorMessage;
+import static hw4.Validator.isValidAge;
+import static hw4.Validator.isValidName;
+
 public class AddPersonsIntoStorage {
 
     public static void main(String args[]) {
@@ -18,24 +22,15 @@ public class AddPersonsIntoStorage {
             do {
                 System.out.println("Enter name:");
                 name = readInput.readName();
-                if (!Validator.isValidName(name)) {
-                    System.out.println("Name " + name + " isn't valid! Enter Valid name!");
-                }
-                else {
-                    person.setName(name);
-                    break;
-                }
-            } while (true);
-
-            do {
-                System.out.println("Enter " + name + "'s age:");
+                System.out.println("Enter age:");
                 age = readInput.readAge();
-                if (!Validator.isValidAge(age)) {
-                    System.out.println("Age " + age + " isn't valid! Enter Valid age!");
-                }
-                else {
+
+                if (isValidName(name) & isValidAge(age)) {
+                    person.setName(name);
                     person.setAge(age);
                     break;
+                } else {
+                    System.out.println(errorMessage());
                 }
             } while (true);
 
@@ -47,7 +42,5 @@ public class AddPersonsIntoStorage {
         System.out.println("Our intStorage is full!");
         System.out.println("-----");
         System.out.println(container);
-
     }
-
 }
