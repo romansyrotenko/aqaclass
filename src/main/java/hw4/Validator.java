@@ -2,11 +2,11 @@ package hw4;
 
 public class Validator {
 
-    public static boolean isValidAge(int value) {
+    private static boolean isValidAge(int value) {
         return (value > 0 && value < 121);
     }
 
-    public static boolean isValidName(String name) {
+    private static boolean isValidName(String name) {
        return (name.length() > 2);
     }
 
