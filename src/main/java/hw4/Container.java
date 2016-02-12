@@ -10,6 +10,7 @@ public class Container {
     public void add(Person person) {
         array[counter] = person;
         counter++;
+        System.out.println("-----\nPerson "+ person + " was successfully added into the Storage\n-----");
     }
 
     public boolean isFull() {
@@ -18,6 +19,7 @@ public class Container {
 
     @Override
     public String toString() {
+        System.out.println("\nOur intStorage is full!\n-----");
         return "Container{" +
                 "array=" + Arrays.toString(array) +
                 '}';

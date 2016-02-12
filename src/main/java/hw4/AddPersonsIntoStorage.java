@@ -1,8 +1,6 @@
 package hw4;
 
-import static hw4.Validator.errorMessage;
-import static hw4.Validator.isValidAge;
-import static hw4.Validator.isValidName;
+import static hw4.Validator.*;
 
 public class AddPersonsIntoStorage {
 
@@ -17,17 +15,12 @@ public class AddPersonsIntoStorage {
 
             String name = readInput.readName();
             int age = readInput.readAge();
-
-            if (isValidName(name) & isValidAge(age)) {
-                 Person person = new Person(name, age);
+            Person person = new Person(name, age);
+            if (isValidPerson(person)) {
                  container.add(person);
-                 System.out.println("-----\nPerson "+ person + " was successfully added into the Storage\n-----");
-            } else {
-                 System.out.println(errorMessage());
             }
         }
 
-        System.out.println("\nOur intStorage is full!\n-----");
         System.out.println(container);
     }
 }
