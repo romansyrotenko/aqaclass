@@ -15,12 +15,14 @@ public class ReadInput {
         int number = 0;
         boolean repeatNumberEnter;
 
+        System.out.println("Enter age:");
+
         do {
             try {
                 number = Integer.parseInt(scanner.nextLine());
                 repeatNumberEnter = false;
             } catch (NumberFormatException e) {
-                System.out.println("Please, enter age!");
+                System.out.println("Please, enter valid age!");
                 scanner.reset();
                 repeatNumberEnter = true;
             }
@@ -33,6 +35,8 @@ public class ReadInput {
 
         String name = "";
         boolean repeatNumberEnter;
+
+        System.out.println("Enter name:");
 
         do {
             try {

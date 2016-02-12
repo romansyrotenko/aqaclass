@@ -6,7 +6,7 @@ public class Validator {
     static boolean isValidAge;
 
     public static boolean isValidAge(int value) {
-        if (value > 1 && value < 121) {
+        if (value > 0 && value < 121) {
             isValidAge = true;
             return true;
         } else {
@@ -36,6 +36,7 @@ public class Validator {
             errorMessage = errorMessage + "Age isn't valid! ";
         }
         errorMessage = errorMessage + " Repeat enter again!";
+
         return errorMessage;
     }
 }
