@@ -23,18 +23,11 @@ public class Validator {
             if (!isValidAge(person.getAge())) {
                 errorMessage = errorMessage + "Age isn't valid! ";
             }
-            System.out.println(errorMessage + " Repeat enter again!");
+            System.out.println(errorMessage + " Can't add this Person!");
             return false;
         }
     }
 
-    public static boolean isValidMenuItem(int value) {
-        if (value > 0 && value < 4) {
-            return true;
-        } else {
-            System.out.println("Please, enter valid menu item\n-----");
-            return false;
-        }
-    }
+
 
 }

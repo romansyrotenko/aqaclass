@@ -8,38 +8,34 @@ public class PersonsStorage {
 
         Container container = new Container();
         ReadInput readInput = new ReadInput();
-        Menu menu = new Menu();
-        int menuItem;
+        Menu menu = new Menu(readInput);
+        int menuItem = 0;
 
         System.out.println("-----\nWelcome to Persons Storage app! What do you want to do?\n-----");
 
-        do {
+        while (menuItem != 3) {
             menu.mainMenu();
-            menuItem = readInput.readNumber("menu item");
-            if (isValidMenuItem(menuItem)) {
-                if (menuItem == 1) {
-                    System.out.println("Enter FIVE people for our intStorage. Valid name - three chars, Valid age from 1 to 120");
+            menuItem = menu.readMenuItem();
 
-                    while (!container.isFull()) {
-                        String name = readInput.readName();
-                        int age = readInput.readNumber("Age");
-                        Person person = new Person(name, age);
-                        if (isValidPerson(person)) {
-                            container.add(person);
-                        }
-                    }
-                    System.out.println(container);
-
-                } else if (menuItem == 2) {
-                    System.out.println("Enter name for search...");
-                    String searchName = readInput.readName();
-                    System.out.println(container.findPerson(searchName));
+            if (menuItem == 1) {
+                System.out.println("Add person");
+                String name = readInput.readName();
+                int age = readInput.readNumber("age");
+                Person person = new Person(name, age);
+                if (isValidPerson(person)) {
+                    container.add(person);
                 }
+
+            } else if (menuItem == 2) {
+                System.out.println("Search person:");
+                String searchName = readInput.readName();
+                int tempCounter = Container.getCounter();
+                Container.setCounter(0);
+                System.out.println(container.findPerson(searchName));
+                Container.setCounter(tempCounter);
             }
-        } while (menuItem != 3);
-
-
-
         }
+        System.out.println("Exiting ...");
+    }
 
 }
