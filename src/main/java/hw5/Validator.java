@@ -2,12 +2,12 @@ package hw5;
 
 public class Validator {
 
-    private static boolean isValidAge(int value) {
-        return (value > 0 && value < 121);
+    public static boolean isValidAge(int value) {
+        return (value > 0 && value < 101);
     }
 
-    private static boolean isValidName(String name) {
-       return (name.length() > 2);
+    public static boolean isValidName(String name) {
+       return (name.length() >= 4);
     }
 
     public static boolean isValidPerson(Person person) {
