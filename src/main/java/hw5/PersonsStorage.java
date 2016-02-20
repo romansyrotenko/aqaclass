@@ -32,6 +32,4 @@ public class PersonsStorage {
         System.out.println("Exiting ...");
     }
 
-
-
 }
