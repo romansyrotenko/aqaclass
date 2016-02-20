@@ -28,6 +28,13 @@ public class Validator {
         }
     }
 
-
+    public static boolean isValidMenuItem(int value) {
+        if (value > 0 && value < 4) {
+            return true;
+        } else {
+            System.out.println("Please, enter valid menu item\n-----");
+            return false;
+        }
+    }
 
 }

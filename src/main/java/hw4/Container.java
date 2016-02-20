@@ -20,7 +20,7 @@ public class Container {
     @Override
     public String toString() {
         System.out.println("\nOur intStorage is full!\n-----");
-        return "Container{" +
+        return "Storage{" +
                 "array=" + Arrays.toString(array) +
                 '}';
     }

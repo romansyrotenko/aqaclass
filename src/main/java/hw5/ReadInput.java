@@ -13,20 +13,20 @@ public class ReadInput {
     public int readNumber(String item) {
 
         int number = 0;
-        boolean repeatNumberEnter;
+        boolean repeat;
 
         System.out.println("Enter " + item);
 
         do {
             try {
                 number = Integer.parseInt(scanner.nextLine());
-                repeatNumberEnter = false;
+                repeat = false;
             } catch (NumberFormatException e) {
                 System.out.println("Please, enter valid " + item);
                 scanner.reset();
-                repeatNumberEnter = true;
+                repeat = true;
             }
-        } while (repeatNumberEnter == true);
+        } while (repeat == true);
 
         return number;
     }
@@ -34,23 +34,22 @@ public class ReadInput {
     public String readName() {
 
         String name = "";
-        boolean repeatNumberEnter;
+        boolean repeat;
 
         System.out.println("Enter name:");
 
         do {
             try {
                 name = scanner.nextLine();
-                repeatNumberEnter = false;
+                repeat = false;
             } catch (NumberFormatException e) {
                 System.out.println("Please, enter valid name!");
                 scanner.reset();
-                repeatNumberEnter = true;
+                repeat = true;
             }
-        } while (repeatNumberEnter == true);
+        } while (repeat == true);
 
         return name;
     }
-
 
 }
