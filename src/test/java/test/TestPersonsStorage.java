@@ -184,9 +184,8 @@ public class TestPersonsStorage {
         storage.setAddCounter(0);
         storage.add(person);
         storage.add(personTwo);
-        Storage results;
         storage.setAddCounter(0);
-        results = storage.findPerson("roman");
+        Storage results = storage.findPerson("roman");
 
         assertEquals(results.getArray()[0].getName(),"roman");
         assertEquals(results.getArray()[1].getName(),"roman");
@@ -199,9 +198,8 @@ public class TestPersonsStorage {
         Person person = new Person("roman", 32);
         storage.setAddCounter(0);
         storage.add(person);
-        Storage results;
         storage.setAddCounter(0);
-        results = storage.findPerson("dima");
+        Storage results = storage.findPerson("dima");
 
         assertEquals(results.getArray()[0], null);
     }
