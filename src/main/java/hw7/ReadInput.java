@@ -13,11 +13,11 @@ public class ReadInput {
     public int readNumber(String item) {
 
         int number = 0;
-        boolean repeat;
+        boolean repeat = true;
 
         System.out.println("Enter " + item + ":");
 
-        do {
+        while(repeat) {
             try {
                 number = Integer.parseInt(scanner.nextLine());
                 repeat = false;
@@ -26,19 +26,18 @@ public class ReadInput {
                 scanner.reset();
                 repeat = true;
             }
-        } while (repeat == true);
-
+        }
         return number;
     }
 
     public String readString(String item) {
 
         String name = "";
-        boolean repeat;
+        boolean repeat = true;
 
         System.out.println("Enter " + item + ":");
 
-        do {
+        while(repeat) {
             try {
                 name = scanner.nextLine();
                 repeat = false;
@@ -47,8 +46,7 @@ public class ReadInput {
                 scanner.reset();
                 repeat = true;
             }
-        } while (repeat == true);
-
+        }
         return name;
     }
 

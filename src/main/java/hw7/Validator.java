@@ -17,6 +17,7 @@ public class Validator {
     }
 
     public static boolean isValidEmail(String email) {
+
         if (email.isEmpty()) {
             return true;
         } else {
@@ -47,6 +48,7 @@ public class Validator {
     }
 
     public static boolean isValidMenuItem(int value) {
+
         if (value > -1 && value <= Menu.MENUMAXITEM | value == 99) {
             return true;
         } else {

@@ -17,40 +17,13 @@ public class TestPersonsStorageHW7 {
        Storage storage = new Storage();
        Person person = new Person("roman", 32, "roman.syrotenko@gmail.com");
 
-       storage.setAddCounter(0);
        storage.add(person);
-       assertEquals(storage.getArray()[0].getName(), "roman");
-       assertEquals(storage.getArray()[0].getAge(),32);
-       assertEquals(storage.getArray()[0].getEmail(),"roman.syrotenko@gmail.com");
+       assertEquals(storage.getList().get(0).getName(), "roman");
+       assertEquals(storage.getList().get(0).getAge(), 32);
+       assertEquals(storage.getList().get(0).getEmail(),"roman.syrotenko@gmail.com");
 
     }
 
-    @Test
-    public void testStorageIsFull()  {
-
-        Storage storage = new Storage();
-        Person person = new Person("roman", 32);
-        storage.setAddCounter(0);
-
-        storage.add(person);
-        storage.add(person);
-        storage.add(person);
-        storage.add(person);
-        storage.add(person);
-
-        assertEquals(storage.isFull(), true);
-    }
-
-    @Test
-    public void testStorageIsNotFull()  {
-
-        Storage storage = new Storage();
-        Person person = new Person("roman", 32);
-        storage.setAddCounter(0);
-
-        storage.add(person);
-        assertEquals(storage.isFull(), false);
-    }
 
     @Test
     public void testIsValidName() {
@@ -205,13 +178,10 @@ public class TestPersonsStorageHW7 {
 
         Storage storage = new Storage();
         Person person = new Person("roman", 32);
-        storage.setAddCounter(0);
         storage.add(person);
-        Storage results;
-        storage.setAddCounter(0);
-        results = storage.findPersonByName("roman");
+        Storage results = storage.findPersonBy("roman");
 
-        assertEquals(results.getArray()[0].getName(), "roman");
+        assertEquals(results.getList().get(0).getName(), "roman");
     }
 
     @Test
@@ -220,14 +190,12 @@ public class TestPersonsStorageHW7 {
         Storage storage = new Storage();
         Person person = new Person("roman", 32);
         Person personTwo = new Person("roman", 48);
-        storage.setAddCounter(0);
         storage.add(person);
         storage.add(personTwo);
-        storage.setAddCounter(0);
-        Storage results = storage.findPersonByName("roman");
+        Storage results = storage.findPersonBy("roman");
 
-        assertEquals(results.getArray()[0].getName(),"roman");
-        assertEquals(results.getArray()[1].getName(),"roman");
+        assertEquals(results.getList().get(0).getName(),"roman");
+        assertEquals(results.getList().get(1).getName(),"roman");
     }
 
     @Test
@@ -236,14 +204,12 @@ public class TestPersonsStorageHW7 {
         Storage storage = new Storage();
         Person person = new Person("roman", 32, "roman.syrotenko@gmail.com");
         Person personTwo = new Person("roman", 48, "roman.syrotenko@gmail.com");
-        storage.setAddCounter(0);
         storage.add(person);
         storage.add(personTwo);
-        storage.setAddCounter(0);
-        Storage results = storage.findPersonByEmail("roman.syrotenko@gmail.com");
+        Storage results = storage.findPersonBy("roman.syrotenko@gmail.com");
 
-        assertEquals(results.getArray()[0].getEmail(),"roman.syrotenko@gmail.com");
-        assertEquals(results.getArray()[1].getEmail(),"roman.syrotenko@gmail.com");
+        assertEquals(results.getList().get(0).getEmail(),"roman.syrotenko@gmail.com");
+        assertEquals(results.getList().get(1).getEmail(),"roman.syrotenko@gmail.com");
     }
 
     @Test
@@ -251,12 +217,21 @@ public class TestPersonsStorageHW7 {
 
         Storage storage = new Storage();
         Person person = new Person("roman", 32);
-        storage.setAddCounter(0);
         storage.add(person);
-        storage.setAddCounter(0);
-        Storage results = storage.findPersonByName("dima");
+        Storage results = storage.findPersonBy("dima");
 
-        assertEquals(results.getArray()[0], null);
+        assertEquals(results.getList().isEmpty(), true);
+    }
+
+    @Test
+    public void testIsNotPersonFoundByEmail() {
+
+        Storage storage = new Storage();
+        Person person = new Person("roman", 32, "roman.syrotenko@gmail.com");
+        storage.add(person);
+        Storage results = storage.findPersonBy("sergey@ukr.net");
+
+        assertEquals(results.getList().isEmpty(), true);
     }
 
 }

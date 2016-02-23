@@ -9,24 +9,31 @@ public class PersonService implements Service {
 
     public void save(Person person) {
 
-        if (!storage.isFull() && isValidPerson(person)) {
+        if (isValidPerson(person)) {
                 storage.add(person);
                 System.out.println("-----\nPerson " + person + " was successfully added into the Storage\n-----");
-        } else if (storage.isFull()) {
-            System.out.println("Can't add new person. The Storage is full!");
         }
     }
 
     public Storage findByName(String name) {
-        return storage.findPersonByName(name);
+        return storage.findPersonBy(name);
     }
 
     public Storage findByEmail(String email) {
-        return storage.findPersonByEmail(email);
+        return storage.findPersonBy(email);
     }
 
     public void printStorage() {
         print(storage);
+    }
+
+    public void addPerson(ReadInput readInput) {
+
+        String name = readInput.readString("name");
+        int age = readInput.readNumber("age");
+        String email = readInput.readString("email");
+        Person person = new Person(name, age, email);
+        save(person);
     }
 
 
