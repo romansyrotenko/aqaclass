@@ -1,26 +1,27 @@
 package test;
 
-import hw5.Person;
-import hw5.Storage;
+import hw7.Person;
+import hw7.Storage;
 import org.junit.Test;
 
-import static hw5.Validator.*;
+import static hw7.Validator.*;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
 
-public class TestPersonsStorage {
+public class TestPersonsStorageHW7 {
 
    @Test
     public void testSavePersonIntoStorage()  {
 
        Storage storage = new Storage();
-       Person person = new Person("roman", 32);
+       Person person = new Person("roman", 32, "roman.syrotenko@gmail.com");
 
        storage.setAddCounter(0);
        storage.add(person);
        assertEquals(storage.getArray()[0].getName(), "roman");
        assertEquals(storage.getArray()[0].getAge(),32);
+       assertEquals(storage.getArray()[0].getEmail(),"roman.syrotenko@gmail.com");
 
     }
 
@@ -112,14 +113,44 @@ public class TestPersonsStorage {
     }
 
     @Test
+    public void testIsValidEmail() {
+
+        assertTrue(isValidEmail("roman.sirotenko@gmail.com"));
+    }
+
+    @Test
+    public void testIsNotValidEmail() {
+
+        assertFalse(isValidEmail("roman.s gmail.com"));
+    }
+
+    @Test
+    public void testIsNotValidFirstPartOfEmail() {
+
+        assertFalse(isValidEmail("!!!roman.sirotenko@gmail.com"));
+    }
+
+    @Test
+    public void testIsNotValidSecondPartOfEmail() {
+
+        assertFalse(isValidEmail("roman.sirotenko@gmco.m"));
+    }
+
+    @Test
+    public void testIsNotValidEmailWithoutAt() {
+
+        assertFalse(isValidEmail("roman.sirotenkogmail.com"));
+    }
+
+    @Test
     public void testIsValidPerson() {
 
-        Person person = new Person("roman", 32);
+        Person person = new Person("roman", 32, "roman.sirotenko@gmail.com");
 
         assertTrue(isValidPerson(person));
     }
 
-    @Test
+   @Test
     public void testIsNotValidPersonWithValidAgeNotValidName() {
 
         Person person = new Person("rob", 32);
@@ -144,21 +175,29 @@ public class TestPersonsStorage {
     }
 
     @Test
+    public void testIsNotValidPersonWithNotValidAgeNotValidNameNotValidEmail() {
+
+        Person person = new Person("S", 112, "ro@@gmail.com");
+
+        assertFalse(isValidPerson(person));
+    }
+
+    @Test
     public void testIsValidMenuItem() {
 
         assertTrue(isValidMenuItem(3));
     }
 
     @Test
-    public void testIsNotValidMenuItemLessOne() {
+    public void testIsNotValidMenuItemLessMin() {
 
-        assertFalse(isValidMenuItem(0));
+        assertFalse(isValidMenuItem(-1));
     }
 
     @Test
-    public void testIsNotValidMenuItemMoreThanThree() {
+    public void testIsNotValidMenuItemMoreThanMax() {
 
-        assertFalse(isValidMenuItem(4));
+        assertFalse(isValidMenuItem(5));
     }
 
     @Test
@@ -170,13 +209,13 @@ public class TestPersonsStorage {
         storage.add(person);
         Storage results;
         storage.setAddCounter(0);
-        results = storage.findPerson("roman");
+        results = storage.findPersonByName("roman");
 
         assertEquals(results.getArray()[0].getName(), "roman");
     }
 
     @Test
-    public void testIsTwoPersonsFound() {
+    public void testIsTwoPersonsFoundByName() {
 
         Storage storage = new Storage();
         Person person = new Person("roman", 32);
@@ -185,10 +224,26 @@ public class TestPersonsStorage {
         storage.add(person);
         storage.add(personTwo);
         storage.setAddCounter(0);
-        Storage results = storage.findPerson("roman");
+        Storage results = storage.findPersonByName("roman");
 
         assertEquals(results.getArray()[0].getName(),"roman");
         assertEquals(results.getArray()[1].getName(),"roman");
+    }
+
+    @Test
+    public void testIsTwoPersonsFoundByEmail() {
+
+        Storage storage = new Storage();
+        Person person = new Person("roman", 32, "roman.syrotenko@gmail.com");
+        Person personTwo = new Person("roman", 48, "roman.syrotenko@gmail.com");
+        storage.setAddCounter(0);
+        storage.add(person);
+        storage.add(personTwo);
+        storage.setAddCounter(0);
+        Storage results = storage.findPersonByEmail("roman.syrotenko@gmail.com");
+
+        assertEquals(results.getArray()[0].getEmail(),"roman.syrotenko@gmail.com");
+        assertEquals(results.getArray()[1].getEmail(),"roman.syrotenko@gmail.com");
     }
 
     @Test
@@ -199,7 +254,7 @@ public class TestPersonsStorage {
         storage.setAddCounter(0);
         storage.add(person);
         storage.setAddCounter(0);
-        Storage results = storage.findPerson("dima");
+        Storage results = storage.findPersonByName("dima");
 
         assertEquals(results.getArray()[0], null);
     }
