@@ -1,5 +1,6 @@
 package hw7;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ReadInput {
@@ -12,19 +13,18 @@ public class ReadInput {
 
     public int readNumber(String item) {
 
-        int number = 0;
-        boolean repeat = true;
+        int number = -1;
 
         System.out.println("Enter " + item + ":");
 
-        while(repeat) {
+        while(number < 0) {
             try {
-                number = Integer.parseInt(scanner.nextLine());
-                repeat = false;
-            } catch (NumberFormatException e) {
+                number = scanner.nextInt();
+            } catch (InputMismatchException e) {
                 System.out.println("Please, enter valid " + item);
-                scanner.reset();
-                repeat = true;
+            }
+            finally {
+                scanner.nextLine();
             }
         }
         return number;
@@ -32,21 +32,8 @@ public class ReadInput {
 
     public String readString(String item) {
 
-        String name = "";
-        boolean repeat = true;
-
         System.out.println("Enter " + item + ":");
-
-        while(repeat) {
-            try {
-                name = scanner.nextLine();
-                repeat = false;
-            } catch (NumberFormatException e) {
-                System.out.println("Please, enter valid " + item + "!");
-                scanner.reset();
-                repeat = true;
-            }
-        }
+        String name = scanner.nextLine();
         return name;
     }
 
