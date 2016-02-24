@@ -28,11 +28,11 @@ public class Storage {
 
         if (!list.isEmpty()) {
             for (Person person: list) {
-                if (isEmail && person != null && person.getEmail().equals(string)) {
+                if (isEmail && person != null && person.getEmail().equalsIgnoreCase(string)) {
                     arrayOfFoundPeople.add(person);
                 }
 
-                if (!isEmail && person != null && person.getName().equals(string)) {
+                if (!isEmail && person != null && person.getName().equalsIgnoreCase(string)) {
                     arrayOfFoundPeople.add(person);
                 }
             }
