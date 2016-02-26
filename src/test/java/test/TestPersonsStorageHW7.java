@@ -179,7 +179,7 @@ public class TestPersonsStorageHW7 {
         Storage storage = new Storage();
         Person person = new Person("roman", 32);
         storage.add(person);
-        Storage results = storage.findPersonBy("roman");
+        Storage results = storage.findPersonByName("roman");
 
         assertEquals(results.getList().get(0).getName(), "roman");
     }
@@ -192,7 +192,7 @@ public class TestPersonsStorageHW7 {
         Person personTwo = new Person("roman", 48);
         storage.add(person);
         storage.add(personTwo);
-        Storage results = storage.findPersonBy("roman");
+        Storage results = storage.findPersonByName("roman");
 
         assertEquals(results.getList().get(0).getName(),"roman");
         assertEquals(results.getList().get(1).getName(),"roman");
@@ -206,7 +206,7 @@ public class TestPersonsStorageHW7 {
         Person personTwo = new Person("roman", 48, "roman.syrotenko@gmail.com");
         storage.add(person);
         storage.add(personTwo);
-        Storage results = storage.findPersonBy("roman.syrotenko@gmail.com");
+        Storage results = storage.findPersonByEmail("roman.syrotenko@gmail.com");
 
         assertEquals(results.getList().get(0).getEmail(),"roman.syrotenko@gmail.com");
         assertEquals(results.getList().get(1).getEmail(),"roman.syrotenko@gmail.com");
@@ -218,7 +218,7 @@ public class TestPersonsStorageHW7 {
         Storage storage = new Storage();
         Person person = new Person("roman", 32);
         storage.add(person);
-        Storage results = storage.findPersonBy("dima");
+        Storage results = storage.findPersonByName("dima");
 
         assertEquals(results.getList().isEmpty(), true);
     }
@@ -229,7 +229,7 @@ public class TestPersonsStorageHW7 {
         Storage storage = new Storage();
         Person person = new Person("roman", 32, "roman.syrotenko@gmail.com");
         storage.add(person);
-        Storage results = storage.findPersonBy("sergey@ukr.net");
+        Storage results = storage.findPersonByEmail("sergey@ukr.net");
 
         assertEquals(results.getList().isEmpty(), true);
     }

@@ -3,8 +3,6 @@ package hw7;
 import java.util.ArrayList;
 import java.util.List;
 
-import static hw7.Validator.isValidEmail;
-
 public class Storage {
 
     List<Person> list = new ArrayList<>();
@@ -21,18 +19,29 @@ public class Storage {
                 '}';
     }
 
-    public Storage findPersonBy(String string) {
+        public Storage findPersonByName(String name) {
 
         Storage arrayOfFoundPeople = new Storage();
-        boolean isEmail = isValidEmail(string);
 
         if (!list.isEmpty()) {
             for (Person person: list) {
-                if (isEmail && person != null && person.getEmail().equalsIgnoreCase(string)) {
+                if (person != null && person.getName().equals(name)) {
                     arrayOfFoundPeople.add(person);
                 }
+            }
+        } else {
+            System.out.println("Nothing to search.... Storage is empty....");
+        }
+        return arrayOfFoundPeople;
+    }
 
-                if (!isEmail && person != null && person.getName().equalsIgnoreCase(string)) {
+    public Storage findPersonByEmail(String email) {
+
+        Storage arrayOfFoundPeople = new Storage();
+
+        if (!list.isEmpty()) {
+            for (Person person: list) {
+                if (person != null && person.getEmail().equals(email)) {
                     arrayOfFoundPeople.add(person);
                 }
             }

@@ -16,11 +16,11 @@ public class PersonService implements Service {
     }
 
     public Storage findByName(String name) {
-        return storage.findPersonBy(name);
+        return storage.findPersonByName(name);
     }
 
     public Storage findByEmail(String email) {
-        return storage.findPersonBy(email);
+        return storage.findPersonByEmail(email);
     }
 
     public void printStorage() {
