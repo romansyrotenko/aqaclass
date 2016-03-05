@@ -1,30 +1,31 @@
 package hw7;
 
+import hw7.repository.PersonDao;
+
 import static hw7.Storage.print;
 import static hw7.Validator.isValidPerson;
 
 public class PersonService implements Service {
 
-    Storage storage = new Storage();
+    PersonDao personDao = new PersonDao();
 
     public void save(Person person) {
 
         if (isValidPerson(person)) {
-                storage.add(person);
-                System.out.println("-----\nPerson " + person + " was successfully added into the Storage\n-----");
+                personDao.add(person);
         }
     }
 
     public Storage findByName(String name) {
-        return storage.findPersonByName(name);
+        return personDao.findPersonByName(name);
     }
 
     public Storage findByEmail(String email) {
-        return storage.findPersonByEmail(email);
+        return personDao.findPersonByEmail(email);
     }
 
     public void printStorage() {
-        print(storage);
+        print(personDao.getAll());
     }
 
     public void addPerson(ReadInput readInput) {
