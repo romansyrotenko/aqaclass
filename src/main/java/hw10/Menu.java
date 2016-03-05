@@ -1,6 +1,6 @@
-package hw7;
+package hw10;
 
-import static hw7.Validator.isValidMenuItem;
+import static hw10.Validator.isValidMenuItem;
 
 public class Menu {
 

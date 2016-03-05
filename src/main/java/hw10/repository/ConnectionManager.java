@@ -1,4 +1,4 @@
-package hw7.repository;
+package hw10.repository;
 
 
 import org.apache.commons.dbutils.DbUtils;
@@ -16,7 +16,7 @@ public class ConnectionManager {
     public static Connection getConnection()  {
 
         Properties properties = new Properties();
-        File file = new File("/home/sroman/Projects/AQAClass/src/main/java/hw7/resources/config.properties");
+        File file = new File("/home/sroman/Projects/AQAClass/src/main/java/hw10/resources/config.properties");
         try {
             properties.load(new FileReader(file));
         } catch (IOException e) {

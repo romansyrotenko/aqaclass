@@ -1,9 +1,9 @@
-package hw7;
+package hw10;
 
-import hw7.repository.PersonDao;
+import hw10.repository.PersonDao;
 
-import static hw7.Storage.print;
-import static hw7.Validator.isValidPerson;
+import static hw10.Storage.print;
+import static hw10.Validator.isValidPerson;
 
 public class PersonService implements Service {
 

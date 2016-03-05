@@ -1,4 +1,4 @@
-package hw7;
+package hw10;
 
 public class PersonsStorage {
 

@@ -1,7 +1,7 @@
-package hw7.repository;
+package hw10.repository;
 
-import hw7.Person;
-import hw7.Storage;
+import hw10.Person;
+import hw10.Storage;
 import org.apache.commons.dbutils.ResultSetHandler;
 
 import java.sql.ResultSet;

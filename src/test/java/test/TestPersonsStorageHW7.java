@@ -1,10 +1,10 @@
 package test;
 
-import hw7.Person;
-import hw7.Storage;
+import hw10.Person;
+import hw10.Storage;
 import org.junit.Test;
 
-import static hw7.Validator.*;
+import static hw10.Validator.*;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
